@@ -14,17 +14,31 @@ public class AddressService extends Util implements AddressDAO {
     public Connection connection = getConnection();
 
     @Override
-    public void add(Address address) {
+    public void add(Address address) throws SQLException {
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO ADDRESS (ID, COUNTRY, CITY, STREET, POST_CODE) VALUES (?, ?, ?, ?, ?)";
         try {
             preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, address.getId());
+            preparedStatement.setString(2, address.getCountry());
+            preparedStatement.setString(3, address.getCity());
+            preparedStatement.setString(4, address.getStreet());
+            preparedStatement.setString(5, address.getPostCode());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            if(preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if(connection != null) {
+                connection.close();
+            }
         }
 
     }
 
+    //TODO: for tomorrow
     @Override
     public List<Address> getAll() {
         return null;
