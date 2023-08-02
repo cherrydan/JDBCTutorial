@@ -1,0 +1,6 @@
+target/
+
+### IntelliJ IDEA ###
+~/IdeaProjects/JDBCTutorial/.idea/*.xml
+~/IdeaProjects/JDBCTutorial/.idea/gitignore
+
