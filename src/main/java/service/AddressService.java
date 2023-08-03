@@ -14,7 +14,8 @@ public class AddressService extends Util implements AddressDAO {
 
     @Override
     public void add(Address address) throws SQLException {
-        String sql = "INSERT INTO ADDRESS (ID, COUNTRY, CITY, STREET, POST_CODE) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO ADDRESS (ID, COUNTRY, CITY, STREET, POST_CODE) " +
+                "VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, address.getId());
             preparedStatement.setString(2, address.getCountry());
