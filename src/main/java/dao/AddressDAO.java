@@ -10,12 +10,12 @@ public interface AddressDAO {
     void add(Address address) throws SQLException;
 
     // === READ
-    List<Address> getAll();
-    Address getById(Long id);
+    List<Address> getAll() throws SQLException;
+    Address getById(Long id) throws SQLException;
 
     // === UPDATE
-    void update(Address address);
+    void update(Address address) throws SQLException;
 
     // === DELETE
-    void remove(Address address);
+    void remove(Address address) throws SQLException;
 }
